@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.carbonface.carbonuser.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.carbonface.carbonuser.entity.UserInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, real_name, sex, birthday, phone_number, mail, create_time, modify_time,
+    user_id
+  </sql>
+
+  <insert id="insert" parameterType="cn.carbonface.carbonuser.entity.UserInfo">
+    insert into user_info (name, real_name, sex, birthday, phone_number, mail, user_id)
+    values (#{name,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR},
+            #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR},
+            #{mail,jdbcType=VARCHAR},#{userId,jdbcType=BIGINT})
+  </insert>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.carbonface.carbonuser.dao.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="cn.carbonface.carbonuser.entity.UserRole">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, role_name, create_time, modify_time
+  </sql>
+
+  <select id="selectByUserId" resultType="cn.carbonface.carbonuser.entity.UserRole">
+    select * from user_role
+                    inner join user_role_link url on user_role.id = url.role_id
+    where user_id=#{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByName" resultType="cn.carbonface.carbonuser.entity.UserRole">
+    select * from user_role where role_name = #{roleName,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="insertUserRoleLink">
+    insert into user_role_link (user_id, role_id)
+    values (#{userId,jdbcType=BIGINT},#{roleId,jdbcType=BIGINT});
+  </insert>
+
+
+</mapper>

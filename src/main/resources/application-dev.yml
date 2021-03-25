@@ -1,0 +1,33 @@
+server:
+  port: 8002
+spring:
+  #profiles defined
+  config:
+    activate:
+      on-profile: dev
+    #database configuration
+  datasource:
+    url: jdbc:mysql://localhost:3306/carbonuser?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Maple@feng7
+
+#mybatis configuration
+mybatis:
+  #  config-location: classpath:mybatis/mybatis-config.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  typeAliasesPackage: cn.carbonface.carbonuser.entity
+  mapperLocations: classpath:mybatis/mapper/*.xml
+
+logging:
+  config: classpath:log4j/log4j2-info.yml
+#  config: src/main/resources/log4j2-config.xml
+#  level:
+#    cn.jay.repository: trace
+
+#swagger config
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.carbonface.carbonuser.dao.RoleAuthMapper">
+  <resultMap id="BaseResultMap" type="cn.carbonface.carbonuser.entity.RoleAuth">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="auth_name" jdbcType="VARCHAR" property="authName" />
+    <result column="auth_permission" jdbcType="VARCHAR" property="authPermission" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <select id="selectByUserId" resultType="cn.carbonface.carbonuser.entity.RoleAuth">
+    select distinct auth.* from role_auth auth
+        inner join role_auth_link ral on auth.id = ral.auth_id
+        inner join user_role_link url on url.role_id = ral.role_id
+        where url.user_id = #{userId,jdbcType=BIGINT}
+
+  </select>
+
+</mapper>

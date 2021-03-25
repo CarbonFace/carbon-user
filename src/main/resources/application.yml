@@ -1,0 +1,16 @@
+server:
+  port: 8002
+spring:
+  #profiles defined
+  profiles:
+    active: dev
+  application:
+    name: Carbon-User
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8008/eureka/
