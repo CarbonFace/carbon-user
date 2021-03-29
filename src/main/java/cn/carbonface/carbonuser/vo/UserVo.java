@@ -2,9 +2,9 @@ package cn.carbonface.carbonuser.vo;
 
 
 
-import cn.carbonface.common.validate.annotations.EnumValue;
-import cn.carbonface.common.validate.groups.Add;
-import cn.carbonface.common.validate.groups.Valid;
+import cn.carbonface.carboncommon.validate.annotations.EnumValue;
+import cn.carbonface.carboncommon.validate.groups.Add;
+import cn.carbonface.carboncommon.validate.groups.Valid;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

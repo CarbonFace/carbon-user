@@ -5,7 +5,7 @@ import cn.carbonface.carbonuser.dto.UserDto;
 import cn.carbonface.carbonuser.entity.RoleAuth;
 import cn.carbonface.carbonuser.entity.User;
 import cn.carbonface.carbonuser.entity.UserRole;
-import cn.carbonface.common.exception.ApiException;
+import cn.carbonface.carboncommon.exception.ApiException;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface UserService {
 
     void addUser(UserDto userDto) throws ApiException;
 
-    User getUserByAccount(String account) throws ApiException;
+    User getUserByUsername(String username) throws ApiException;
 
     void userValidate(User user) throws ApiException;
 

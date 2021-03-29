@@ -11,7 +11,7 @@ import cn.carbonface.carbonuser.entity.User;
 import cn.carbonface.carbonuser.entity.UserInfo;
 import cn.carbonface.carbonuser.entity.UserRole;
 import cn.carbonface.carbonuser.service.UserService;
-import cn.carbonface.common.exception.ApiException;
+import cn.carbonface.carboncommon.exception.ApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
      * @version: 1.0
      */
     @Override
-    public User getUserByAccount(String username) throws ApiException {
+    public User getUserByUsername(String username) throws ApiException {
         User user = userMapper.selectByUsername(username);
         if (user == null) {
             throw new ApiException("用户： "+ username + "不存在");
@@ -119,9 +119,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void userValidate(User user) throws ApiException {
-        String account = user.getUsername();
+        String username = user.getUsername();
         String password = user.getPassword();
-        User dbUser = getUserByAccount(account);
+        User dbUser = getUserByUsername(username);
         String dbPassword = dbUser.getPassword();
         boolean matched = bCryptPasswordEncoder.matches(password, dbPassword);
         if (!matched){
@@ -141,9 +141,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void resetUserPassword(User user) throws ApiException {
-        String account = user.getUsername();
+        String username = user.getUsername();
         //get old DO from database by account
-        User dbUser = getUserByAccount(account);
+        User dbUser = getUserByUsername(username);
         String newPassword = user.getPassword();
         String encodeNewPassword = bCryptPasswordEncoder.encode(newPassword);
         dbUser.setPassword(encodeNewPassword);
