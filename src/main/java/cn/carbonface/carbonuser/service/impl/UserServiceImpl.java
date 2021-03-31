@@ -1,6 +1,7 @@
 package cn.carbonface.carbonuser.service.impl;
 
 
+import cn.carbonface.carboncommon.exception.CarbonException;
 import cn.carbonface.carbonuser.dao.RoleAuthMapper;
 import cn.carbonface.carbonuser.dao.UserInfoMapper;
 import cn.carbonface.carbonuser.dao.UserMapper;
@@ -52,13 +53,15 @@ public class UserServiceImpl implements UserService {
      * @version: 1.0
      */
     @Override
-    public User getUserByUsername(String username) throws ApiException {
+    public User getUserByUsername(String username) throws CarbonException {
         User user = userMapper.selectByUsername(username);
         if (user == null) {
-            throw new ApiException("用户： "+ username + "不存在");
+            throw new CarbonException("用户： "+ username + "不存在");
         }
         return user;
     }
+
+
     /**
      * @description: getRoleByUserId
      *
@@ -115,20 +118,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
-
-    @Override
-    public void userValidate(User user) throws ApiException {
-        String username = user.getUsername();
-        String password = user.getPassword();
-        User dbUser = getUserByUsername(username);
-        String dbPassword = dbUser.getPassword();
-        boolean matched = bCryptPasswordEncoder.matches(password, dbPassword);
-        if (!matched){
-            throw new ApiException("密码不正确！");
-        }
-    }
-
     /**
      * @description: reset user's password, as well as generate new password salt along with update DB
      *
@@ -140,7 +129,7 @@ public class UserServiceImpl implements UserService {
      */
     @Transactional
     @Override
-    public void resetUserPassword(User user) throws ApiException {
+    public void resetUserPassword(User user) throws CarbonException {
         String username = user.getUsername();
         //get old DO from database by account
         User dbUser = getUserByUsername(username);

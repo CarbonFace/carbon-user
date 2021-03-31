@@ -1,6 +1,7 @@
 package cn.carbonface.carbonuser.service;
 
 
+import cn.carbonface.carboncommon.exception.CarbonException;
 import cn.carbonface.carbonuser.dto.UserDto;
 import cn.carbonface.carbonuser.entity.RoleAuth;
 import cn.carbonface.carbonuser.entity.User;
@@ -15,11 +16,9 @@ public interface UserService {
 
     void addUser(UserDto userDto) throws ApiException;
 
-    User getUserByUsername(String username) throws ApiException;
+    User getUserByUsername(String username) throws CarbonException;
 
-    void userValidate(User user) throws ApiException;
-
-    void resetUserPassword(User user) throws ApiException;
+    void resetUserPassword(User user) throws CarbonException;
 
     UserRole getRoleByName(String roleName);
 

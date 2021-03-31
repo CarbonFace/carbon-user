@@ -1,5 +1,6 @@
 package cn.carbonface.carbonuser.controller;
 
+import cn.carbonface.carboncommon.exception.CarbonException;
 import cn.carbonface.carboncommon.interceptor.FeignOnly;
 import cn.carbonface.carboncommon.tools.RedisUtil;
 import cn.carbonface.carbonuser.dto.UserDto;
@@ -29,29 +30,24 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @PostMapping("register")
     @ApiOperation("添加用户")
-    public ApiResult addUser(@Validated({Add.class}) UserVo userVo){
+    public ApiResult addUser(@Validated({Add.class}) UserVo userVo) throws ApiException {
         UserDto userDto = new UserDto(userVo);
-        try {
-            userService.addUser(userDto);
-            return ApiResult.ok("用户创建成功！");
-        } catch (ApiException e){
-            e.printStackTrace();
-            String msg = e.getMessage();
-            log.error(msg);
-            return ApiResult.error(msg);
-        }
+        userService.addUser(userDto);
+        return ApiResult.ok("用户创建成功！");
     }
 
     @GetMapping("hello")
     @ApiOperation("hello 方法")
-    public String hello(){
-        RedisUtil.set("key","key",300);
+    @FeignOnly
+    public String hello() {
+        log.info("feign hello!");
         return "hello!!";
     }
 
@@ -68,17 +64,15 @@ public class UserController {
         List<RoleAuth> RoleAuths = userService.getAuthByUserId(userId);
         return RoleAuths;
     }
-    @PostMapping("getUserByUsername")
-    public User getUserByUsername(String username){
+
+    @GetMapping("getUserByUsername")
+    public User getUserByUsername(String username) throws ApiException {
         try {
             User user = userService.getUserByUsername(username);
             return user;
-        }catch (ApiException e){
+        } catch (CarbonException e){
             log.info(e.getMessage());
             return null;
         }
     }
-
-
-
 }

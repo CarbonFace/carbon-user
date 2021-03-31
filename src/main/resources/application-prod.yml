@@ -12,6 +12,15 @@ spring:
     username: root
     password: Maple@feng7
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+        requestInterceptors: cn.carbonface.carboncommon.interceptor.FeignClientInterceptor
+
 #mybatis configuration
 mybatis:
   #  config-location: classpath:mybatis/mybatis-config.xml
