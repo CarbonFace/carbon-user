@@ -13,8 +13,8 @@
     <description>user service of CarbonFace project</description>
     <dependencies>
         <dependency>
-            <groupId>cn.carbonface</groupId>
-            <artifactId>carbon-common</artifactId>
+            <groupId>cn.carbonface</groupId>  <!--the security module includes common module -->
+            <artifactId>carbon-security</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

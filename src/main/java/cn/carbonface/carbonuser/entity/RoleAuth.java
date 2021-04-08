@@ -1,7 +1,6 @@
 package cn.carbonface.carbonuser.entity;
 
 import java.util.Date;
-
 public class RoleAuth {
     private Long id;
 

@@ -36,6 +36,9 @@ create table `user_role`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+insert into user_role (role_name)
+values ('ADMIN'),('USER');
+
 create table `role_auth`
 (
     id                  bigint primary key auto_increment comment 'primary key',

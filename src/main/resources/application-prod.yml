@@ -11,7 +11,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: Maple@feng7
-
+  redis:
+    port: 6379
+    host: localhost
+    database: 1
+    password: Maple@feng7
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 500
 feign:
   client:
     config:
@@ -19,7 +30,7 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
-        requestInterceptors: cn.carbonface.carboncommon.interceptor.FeignClientInterceptor
+        requestInterceptors: cn.carbonface.carbonsecurity.core.interceptor.FeignClientInterceptor
 
 #mybatis configuration
 mybatis:
@@ -40,3 +51,17 @@ springfox:
   documentation:
     swagger-ui:
       enabled: true
+
+jwt:
+  # secret Key
+  secret: JWTSecret,CarbonFace
+  # HeaderKey
+  tokenHeader: Authorization
+  # Token head
+  tokenPrefix: Bearer
+  # expire time
+  expiration: 86400
+  # refresh time
+  refreshTime: 7
+  # no jwt need filter
+  antMatchers: /login/**,/carbonface/hello/hello

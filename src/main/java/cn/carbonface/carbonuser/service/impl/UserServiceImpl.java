@@ -103,8 +103,8 @@ public class UserServiceImpl implements UserService {
     public void addUser(UserDto userDto) throws ApiException {
         User user = userDto.getUser();
         UserInfo userInfo = userDto.getUserInfo();
-        boolean accountUnique = userMapper.selectUsernameUnique(user.getUsername());
-        if (!accountUnique){
+        boolean usernameUnique = userMapper.selectUsernameUnique(user.getUsername());
+        if (!usernameUnique){
             throw new ApiException("账号已存在");
         }
         String password = user.getPassword();

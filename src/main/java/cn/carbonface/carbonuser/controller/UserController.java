@@ -1,8 +1,8 @@
 package cn.carbonface.carbonuser.controller;
 
 import cn.carbonface.carboncommon.exception.CarbonException;
-import cn.carbonface.carboncommon.interceptor.FeignOnly;
-import cn.carbonface.carboncommon.tools.RedisUtil;
+import cn.carbonface.carbonsecurity.core.interceptor.FeignOnly;
+import cn.carbonface.carbonsecurity.core.interceptor.NoAuth;
 import cn.carbonface.carbonuser.dto.UserDto;
 import cn.carbonface.carbonuser.entity.RoleAuth;
 import cn.carbonface.carbonuser.entity.User;
@@ -37,6 +37,7 @@ public class UserController {
 
     @PostMapping("register")
     @ApiOperation("添加用户")
+    @NoAuth
     public ApiResult addUser(@Validated({Add.class}) UserVo userVo) throws ApiException {
         UserDto userDto = new UserDto(userVo);
         userService.addUser(userDto);
@@ -45,9 +46,7 @@ public class UserController {
 
     @GetMapping("hello")
     @ApiOperation("hello 方法")
-    @FeignOnly
     public String hello() {
-        log.info("feign hello!");
         return "hello!!";
     }
 
@@ -65,7 +64,8 @@ public class UserController {
         return RoleAuths;
     }
 
-    @GetMapping("getUserByUsername")
+    @PostMapping("getUserByUsername")
+    @FeignOnly
     public User getUserByUsername(String username) throws ApiException {
         try {
             User user = userService.getUserByUsername(username);
