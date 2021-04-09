@@ -28,19 +28,19 @@
     </typeAliases>
 
     <!--    <typeHandlers>
-            <typeHandler handler="com.carbonface.typehandlers"></typeHandler>
+            <typeHandler handler="cn.carbonface.carbonuser.typehandlers"></typeHandler>
         </typeHandlers>-->
 
     <!-- 对象工厂 -->
-    <!--    <objectFactory type="com.carbonface.objectfactory">
+    <!--    <objectFactory type="cn.carbonface.carbonuser.objectfactory">
 
         </objectFactory>-->
 
     <!--    <plugins>
-            <plugin interceptor="com.carbonface.interceptor.SQLInterceptor">
+            <plugin interceptor="cn.carbonface.carbonuser.interceptor.SQLInterceptor">
 
             </plugin>
-            <plugin interceptor="com.carbonface.interceptor.MyPageInterceptor">
+            <plugin interceptor="cn.carbonface.carbonuser.interceptor.MyPageInterceptor">
             </plugin>
         </plugins>-->
 
