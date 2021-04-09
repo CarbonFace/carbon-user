@@ -16,7 +16,7 @@ public interface UserService {
 
     void addUser(UserDto userDto) throws ApiException;
 
-    User getUserByUsername(String username) throws CarbonException;
+    User getUserByUsername(String username);
 
     void resetUserPassword(User user) throws CarbonException;
 

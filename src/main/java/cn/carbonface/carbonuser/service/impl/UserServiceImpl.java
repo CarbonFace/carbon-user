@@ -20,7 +20,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+/**
+ * @Classname UserServiceImpl
+ * @Description UserServiceImpl for the UserService
+ * @Author CarbonFace <553127022@qq.com>
+ * @Date 2021/3/15 17:15
+ * @Version V1.0
+ */
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -44,8 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @description: private method use for get user model by account
-     *
+     * @description: method use for get user model by username
      * @param username
      * @return com.carbonface.entity.User
      * @author: CarbonFace <553127022@qq.com>
@@ -53,18 +58,14 @@ public class UserServiceImpl implements UserService {
      * @version: 1.0
      */
     @Override
-    public User getUserByUsername(String username) throws CarbonException {
+    public User getUserByUsername(String username){
         User user = userMapper.selectByUsername(username);
-        if (user == null) {
-            throw new CarbonException("用户： "+ username + "不存在");
-        }
         return user;
     }
 
 
     /**
      * @description: getRoleByUserId
-     *
      * @param userId
      * @return java.util.List<com.carbonface.entity.UserRole>
      * @author: CarbonFace  <553127022@qq.com>
@@ -77,6 +78,15 @@ public class UserServiceImpl implements UserService {
         return userRoles;
     }
 
+    /**
+     *
+     * @Description get role by rolename
+     * @param roleName
+     * @return cn.carbonface.carbonuser.entity.UserRole
+     * @author CarbonFace <553127022@qq.com>
+     * @date 2021/4/9 18:03
+     * @version 1.0
+     */
     @Override
     public UserRole getRoleByName(String roleName){
         UserRole userRole = userRoleMapper.selectByName(roleName);
@@ -100,6 +110,15 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
+    /**
+     *
+     * @Description add user service for add new user for the carbon-user
+     * @param userDto
+     * @return void
+     * @author CarbonFace <553127022@qq.com>
+     * @date 2021/4/9 18:02
+     * @version 1.0
+     */
     public void addUser(UserDto userDto) throws ApiException {
         User user = userDto.getUser();
         UserInfo userInfo = userDto.getUserInfo();
