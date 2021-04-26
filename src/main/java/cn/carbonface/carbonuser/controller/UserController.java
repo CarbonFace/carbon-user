@@ -15,10 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public class UserController {
     @PostMapping("register")
     @ApiOperation("添加用户")
     @NoAuth
-    public ApiResult addUser(@Validated({Add.class}) UserVo userVo) throws ApiException {
+    public ApiResult addUser( @Validated({Add.class}) @RequestBody UserVo userVo) throws ApiException {
         UserDto userDto = new UserDto(userVo);
         userService.addUser(userDto);
         return ApiResult.ok("用户创建成功！");

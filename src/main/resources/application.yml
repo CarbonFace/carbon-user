@@ -1,5 +1,9 @@
 server:
   port: 8002
+info:
+  groupId: @project.groupId@
+  artifactId: @project.artifactId@
+  version: @project.version@
 spring:
   #profiles defined
   profiles:

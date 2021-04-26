@@ -4,6 +4,7 @@ package cn.carbonface.carbonuser.dto;
 import cn.carbonface.carbonuser.entity.User;
 import cn.carbonface.carbonuser.entity.UserInfo;
 import cn.carbonface.carbonuser.vo.UserVo;
+import org.springframework.lang.Nullable;
 
 
 /**

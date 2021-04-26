@@ -34,7 +34,7 @@ public class UserVo {
     @ApiModelProperty(value = "用户姓名")
     private String realName;
     @ApiModelProperty(value ="性别",allowableValues=",男,女")
-    @EnumValue(groups = {Add.class},message = "性别输入错误",in = {"","男","女"})
+    @EnumValue(message = "性别输入错误",in = {"","男","女"})
     private String sex;
     @ApiModelProperty(value = "用户生日",dataType = "Date")
     private Date birthday;
@@ -42,7 +42,7 @@ public class UserVo {
     @Pattern(groups = {Add.class},regexp = "^1[0-9]{10}$", message = "手机号格式错误")
     private String phoneNumber;
     @ApiModelProperty(value = "邮箱")
-    @Email(groups = {Add.class},message = "邮箱格式错误")
+    @Email(message = "邮箱格式错误")
     private String mail;
 
 

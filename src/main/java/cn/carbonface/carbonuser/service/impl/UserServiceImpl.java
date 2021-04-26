@@ -1,6 +1,7 @@
 package cn.carbonface.carbonuser.service.impl;
 
 
+import cn.carbonface.carboncommon.dto.RetCode;
 import cn.carbonface.carboncommon.exception.CarbonException;
 import cn.carbonface.carbonuser.dao.RoleAuthMapper;
 import cn.carbonface.carbonuser.dao.UserInfoMapper;
@@ -124,15 +125,15 @@ public class UserServiceImpl implements UserService {
         UserInfo userInfo = userDto.getUserInfo();
         boolean usernameUnique = userMapper.selectUsernameUnique(user.getUsername());
         if (!usernameUnique){
-            throw new ApiException("账号已存在");
+            throw new ApiException(RetCode.USER_ACCOUNT_ALREADY_EXIST);
         }
         String password = user.getPassword();
         String encodePassword = bCryptPasswordEncoder.encode(password);
         user.setPassword(encodePassword);
-        Long userId = userMapper.insert(user);
-        userInfo.setUserId(userId);
-        UserRole userRole = getRoleByName(ROLE_ADMIN);
-        userRoleMapper.insertUserRoleLink(userId,userRole.getId());
+        long insert = userMapper.insert(user);
+        userInfo.setUserId(user.getId());
+        UserRole userRole = getRoleByName(ROLE_USER);
+        userRoleMapper.insertUserRoleLink(user.getId(),userRole.getId());
         userInfoMapper.insert(userInfo);
     }
 

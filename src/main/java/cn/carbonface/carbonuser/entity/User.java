@@ -1,6 +1,5 @@
 package cn.carbonface.carbonuser.entity;
 
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 public class User {
