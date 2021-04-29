@@ -1,7 +1,8 @@
 package cn.carbonface.carbonuser.controller;
 
 import cn.carbonface.carboncommon.dto.ApiResult;
-import cn.carbonface.carboncommon.exception.ApiException;
+
+import cn.carbonface.carboncommon.exception.CarbonException;
 import cn.carbonface.carboncommon.validate.groups.Add;
 import cn.carbonface.carbonsecurity.core.interceptor.FeignOnly;
 import cn.carbonface.carbonsecurity.core.interceptor.NoAuth;
@@ -41,10 +42,10 @@ public class UserController {
     @PostMapping("register")
     @ApiOperation("添加用户")
     @NoAuth
-    public ApiResult addUser( @Validated({Add.class}) @RequestBody UserVo userVo) throws ApiException {
+    public ApiResult<?> addUser( @Validated({Add.class}) @RequestBody UserVo userVo) throws CarbonException {
         UserDto userDto = new UserDto(userVo);
         userService.addUser(userDto);
-        return ApiResult.ok("用户创建成功！");
+        return ApiResult.okMsg("用户创建成功！");
     }
 
     @GetMapping("hello")
@@ -55,22 +56,22 @@ public class UserController {
 
     @PostMapping("getRoleByUserId")
     @FeignOnly
-    public List<UserRole> getRoleByUserId(Long userId) {
+    public ApiResult<List<UserRole>> getRoleByUserId(Long userId) {
         List<UserRole> userRoles = userService.getRoleByUserId(userId);
-        return userRoles;
+        return ApiResult.ok(userRoles);
     }
 
     @PostMapping("getAuthByUserId")
     @FeignOnly
-    public List<RoleAuth> getAuthByUserId(Long userId) {
-        List<RoleAuth> RoleAuths = userService.getAuthByUserId(userId);
-        return RoleAuths;
+    public ApiResult<List<RoleAuth>> getAuthByUserId(Long userId) {
+        List<RoleAuth> roleAuths = userService.getAuthByUserId(userId);
+        return ApiResult.ok(roleAuths);
     }
 
     @PostMapping("getUserByUsername")
     @FeignOnly
-    public User getUserByUsername(String username){
+    public ApiResult<User> getUserByUsername(String username){
         User user = userService.getUserByUsername(username);
-        return user;
+        return ApiResult.ok(user);
     }
 }

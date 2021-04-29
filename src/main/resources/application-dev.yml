@@ -31,7 +31,10 @@ spring:
       host: localhost
       port: 27017
       grid-fs-database: mongoFile
-
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 300MB
 management:
   endpoints:
     web:
@@ -40,14 +43,6 @@ management:
   endpoint:
     health:
       show-details: always
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: basic
-        requestInterceptors: cn.carbonface.carbonsecurity.core.interceptor.FeignClientInterceptor
 #mybatis configuration
 mybatis:
   #  config-location: classpath:mybatis/mybatis-config.xml
@@ -80,4 +75,4 @@ jwt:
   # refresh time
   refreshTime: 7
   # no jwt need filter
-  antMatchers: /login/**,/actuator/*,/actuator
+  antMatchers: login/*,/actuator/*,/actuator

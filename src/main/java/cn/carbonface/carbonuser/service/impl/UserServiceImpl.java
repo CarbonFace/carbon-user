@@ -120,12 +120,12 @@ public class UserServiceImpl implements UserService {
      * @date 2021/4/9 18:02
      * @version 1.0
      */
-    public void addUser(UserDto userDto) throws ApiException {
+    public void addUser(UserDto userDto) throws CarbonException {
         User user = userDto.getUser();
         UserInfo userInfo = userDto.getUserInfo();
         boolean usernameUnique = userMapper.selectUsernameUnique(user.getUsername());
         if (!usernameUnique){
-            throw new ApiException(RetCode.USER_ACCOUNT_ALREADY_EXIST);
+            throw new CarbonException(RetCode.USER_ACCOUNT_ALREADY_EXIST);
         }
         String password = user.getPassword();
         String encodePassword = bCryptPasswordEncoder.encode(password);

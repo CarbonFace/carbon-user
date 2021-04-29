@@ -14,7 +14,7 @@ public interface UserService {
 
     List<UserRole> getRoleByUserId(Long userId);
 
-    void addUser(UserDto userDto) throws ApiException;
+    void addUser(UserDto userDto) throws CarbonException;
 
     User getUserByUsername(String username);
 
