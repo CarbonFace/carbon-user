@@ -75,4 +75,4 @@ jwt:
   # refresh time
   refreshTime: 7
   # no jwt need filter
-  antMatchers: login/*,/actuator/*,/actuator
+  antMatchers: /login/**,/actuator/*,/actuator

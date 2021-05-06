@@ -15,11 +15,11 @@ import java.util.Date;
 
 @ApiModel(value = "用户模型",description = "用户模型")
 /**
- * @Classname UserVo
- * @Description view model of the user information with validation invoked
- * @Author CarbonFace <553127022@qq.com>
- * @Date 2021/3/13 14:15
- * @Version V1.0
+ * Classname: UserVo
+ * Description: view model of the user information with validation invoked
+ * @author CarbonFace <553127022@qq.com>
+ * Date: 2021/3/13 14:15
+ * @version V1.0
  */
 public class UserVo {
 

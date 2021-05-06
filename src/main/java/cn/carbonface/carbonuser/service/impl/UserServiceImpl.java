@@ -13,7 +13,6 @@ import cn.carbonface.carbonuser.entity.User;
 import cn.carbonface.carbonuser.entity.UserInfo;
 import cn.carbonface.carbonuser.entity.UserRole;
 import cn.carbonface.carbonuser.service.UserService;
-import cn.carbonface.carboncommon.exception.ApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,11 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * @Classname UserServiceImpl
- * @Description UserServiceImpl for the UserService
- * @Author CarbonFace <553127022@qq.com>
- * @Date 2021/3/15 17:15
- * @Version V1.0
+ * Classname: UserServiceImpl
+ * Description: UserServiceImpl for the UserService
+ * @author CarbonFace <553127022@qq.com>
+ * Date: 2021/3/15 17:15
+ * @version V1.0
  */
 @Service
 @Slf4j
@@ -51,11 +50,11 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @description: method use for get user model by username
+     * Description:: method use for get user model by username
      * @param username
      * @return com.carbonface.entity.User
      * @author: CarbonFace <553127022@qq.com>
-     * @date: 2021/3/16 14:05
+     * Date:: 2021/3/16 14:05
      * @version: 1.0
      */
     @Override
@@ -66,11 +65,11 @@ public class UserServiceImpl implements UserService {
 
 
     /**
-     * @description: getRoleByUserId
+     * Description:: getRoleByUserId
      * @param userId
      * @return java.util.List<com.carbonface.entity.UserRole>
      * @author: CarbonFace  <553127022@qq.com>
-     * @date: 2021/3/18 10:43
+     * Date:: 2021/3/18 10:43
      * @version: 1.0
      */
     @Override
@@ -81,11 +80,11 @@ public class UserServiceImpl implements UserService {
 
     /**
      *
-     * @Description get role by rolename
+     * Description: get role by rolename
      * @param roleName
      * @return cn.carbonface.carbonuser.entity.UserRole
      * @author CarbonFace <553127022@qq.com>
-     * @date 2021/4/9 18:03
+     * Date: 2021/4/9 18:03
      * @version 1.0
      */
     @Override
@@ -95,13 +94,13 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @description: getAuthByUserId
+     * Description: getAuthByUserId
      *
      * @param userId
      * @return java.util.List<com.carbonface.entity.RoleAuth>
-     * @author: CarbonFace  <553127022@qq.com>
-     * @date: 2021/3/18 18:13
-     * @version: 1.0
+     * @author CarbonFace  <553127022@qq.com>
+     * Date: 2021/3/18 18:13
+     * @version 1.0
      */
     @Override
     public List<RoleAuth> getAuthByUserId(Long userId) {
@@ -113,11 +112,11 @@ public class UserServiceImpl implements UserService {
     @Override
     /**
      *
-     * @Description add user service for add new user for the carbon-user
+     * Description: add user service for add new user for the carbon-user
      * @param userDto
      * @return void
      * @author CarbonFace <553127022@qq.com>
-     * @date 2021/4/9 18:02
+     * Date: 2021/4/9 18:02
      * @version 1.0
      */
     public void addUser(UserDto userDto) throws CarbonException {
@@ -139,13 +138,13 @@ public class UserServiceImpl implements UserService {
 
 
     /**
-     * @description: reset user's password, as well as generate new password salt along with update DB
+     * Description:: reset user's password, as well as generate new password salt along with update DB
      *
      * @param user
      * @return void
-     * @author: CarbonFace <553127022@qq.com>
-     * @date: 2021/3/16 14:06
-     * @version: 1.0
+     * @author CarbonFace <553127022@qq.com>
+     * Date:: 2021/3/16 14:06
+     * @version V1.0
      */
     @Transactional
     @Override

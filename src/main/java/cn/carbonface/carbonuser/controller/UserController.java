@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @Classname UserController
- * @Description UserController for the user service
- * @Author CarbonFace <553127022@qq.com>
- * @Date 2021/3/15 15:15
- * @Version V1.0
+ * Classname: UserController
+ * Description: UserController for the user service
+ * @author CarbonFace <553127022@qq.com>
+ * Date: 2021/3/15 15:15
+ * @version V1.0
  */
 @RestController
 @RequestMapping("user")

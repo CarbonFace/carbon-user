@@ -6,7 +6,6 @@ import cn.carbonface.carbonuser.dto.UserDto;
 import cn.carbonface.carbonuser.entity.RoleAuth;
 import cn.carbonface.carbonuser.entity.User;
 import cn.carbonface.carbonuser.entity.UserRole;
-import cn.carbonface.carboncommon.exception.ApiException;
 
 import java.util.List;
 

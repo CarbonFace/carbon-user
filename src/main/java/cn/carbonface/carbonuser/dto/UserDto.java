@@ -8,11 +8,11 @@ import org.springframework.lang.Nullable;
 
 
 /**
- * @Classname UserDto
- * @Description user data transfer model which contains the user entity and user info
- * @Author CarbonFace <553127022@qq.com>
- * @Date 2021/3/15 17:15
- * @Version V1.0
+ * Classname: UserDto
+ * Description: user data transfer model which contains the user entity and user info
+ * @author CarbonFace <553127022@qq.com>
+ * Date: 2021/3/15 17:15
+ * @version V1.0
  */
 public class UserDto {
     private User user;
@@ -41,11 +41,11 @@ public class UserDto {
 
     /**
      *
-     * @Description hide user id in some required cases
+     * Description: hide user id in some required cases
      * @param
      * @return cn.carbonface.carbonuser.dto.UserDto
      * @author CarbonFace <553127022@qq.com>
-     * @date 2021/4/9 18:05
+     * Date: 2021/4/9 18:05
      * @version 1.0
      */
     public UserDto hideId(){
