@@ -1,8 +1,7 @@
 package cn.carbonface.carbonuser.entity;
 
-import lombok.NoArgsConstructor;
-
 import java.util.Date;
+
 public class UserInfo {
     private Long id;
 

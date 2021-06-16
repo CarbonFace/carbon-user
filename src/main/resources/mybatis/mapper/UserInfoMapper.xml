@@ -24,5 +24,35 @@
             #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR},
             #{mail,jdbcType=VARCHAR},#{userId,jdbcType=BIGINT})
   </insert>
+  <update id="update" parameterType="cn.carbonface.carbonuser.entity.UserInfo">
+    update user_info
+    <trim prefix="set" suffixOverrides=",">
+    <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},</if>
+    <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},</if>
+    <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},</if>
+    <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},</if>
+    <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},</if>
+    <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},</if>
+    </trim>
+    where
+    <choose>
+      <when test="id != null">
+        id = #{id,jdbcType=BIGINT}
+      </when>
+      <otherwise>
+        user_id = #{userId,jdbcType=BIGINT}
+      </otherwise>
+    </choose>
+  </update>
+  <select id="selectByUserId" resultType="cn.carbonface.carbonuser.entity.UserInfo">
+      select * from user_info where
+        user_id = #{userId,jdbcType=BIGINT}
+    </select>
 
 </mapper>

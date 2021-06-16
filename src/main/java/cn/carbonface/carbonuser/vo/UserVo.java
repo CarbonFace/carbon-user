@@ -5,6 +5,7 @@ package cn.carbonface.carbonuser.vo;
 import cn.carbonface.carboncommon.validate.annotations.EnumValue;
 import cn.carbonface.carboncommon.validate.groups.Add;
 import cn.carbonface.carboncommon.validate.groups.Valid;
+import cn.carbonface.carbonuser.entity.UserInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -44,6 +45,20 @@ public class UserVo {
     @ApiModelProperty(value = "邮箱")
     @Email(message = "邮箱格式错误")
     private String mail;
+    @ApiModelProperty(value = "头像id")
+    private String userImageId;
+
+    public UserVo() {
+    }
+
+    public UserVo(UserInfo userInfo) {
+        this.name = userInfo.getName();
+        this.realName = userInfo.getRealName();
+        this.birthday = userInfo.getBirthday();
+        this.phoneNumber = userInfo.getPhoneNumber();
+        this.mail =  userInfo.getMail();
+        this.sex = userInfo.getSex();
+    }
 
 
     public String getUsername() {
@@ -108,5 +123,13 @@ public class UserVo {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getUserImageId() {
+        return userImageId;
+    }
+
+    public void setUserImageId(String userImageId) {
+        this.userImageId = userImageId;
     }
 }

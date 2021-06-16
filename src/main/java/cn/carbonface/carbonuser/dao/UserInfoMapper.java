@@ -8,4 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserInfoMapper {
     long insert(UserInfo userInfo);
+
+    UserInfo selectByUserId(long userId);
+
+    void update(UserInfo userInfo);
 }

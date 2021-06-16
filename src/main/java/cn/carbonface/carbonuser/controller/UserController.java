@@ -1,7 +1,6 @@
 package cn.carbonface.carbonuser.controller;
 
 import cn.carbonface.carboncommon.dto.ApiResult;
-
 import cn.carbonface.carboncommon.exception.CarbonException;
 import cn.carbonface.carboncommon.validate.groups.Add;
 import cn.carbonface.carbonsecurity.core.interceptor.FeignOnly;
@@ -48,6 +47,19 @@ public class UserController {
         return ApiResult.okMsg("用户创建成功！");
     }
 
+    @GetMapping("info")
+    @ApiOperation("用户信息")
+    public ApiResult<UserVo> userInfo(){
+        UserVo userInfo = userService.getUserInfo();
+        return ApiResult.ok(userInfo);
+    }
+
+    @PostMapping("update")
+    @ApiOperation("更新用户信息")
+    public ApiResult<?> userInfoUpdate(@RequestBody UserVo userVo) throws CarbonException {
+        userService.updateUserInfo(userVo);
+        return ApiResult.ok("用户信息更新成功");
+    }
     @GetMapping("hello")
     @ApiOperation("hello 方法")
     public String hello() {
