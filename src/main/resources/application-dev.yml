@@ -7,13 +7,13 @@ spring:
       on-profile: dev
     #database configuration
   datasource:
-    url: jdbc:mysql://localhost:3306/carbonuser?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://${carbon_cloud.mysql_address}:3306/carbonuser?characterEncoding=utf-8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: carbonuser
     password: Carbon@mysqlUser
   redis:
     port: 6379
-    host: localhost
+    host: ${carbon_cloud.redis_address}
     database: 1
     password: Carbon@redis
     lettuce:
@@ -28,7 +28,7 @@ spring:
       database: carbonuser
       username: carbonuser
       password: Maple@user
-      host: localhost
+      host: ${carbon_cloud.mongo_address}
       port: 27017
       grid-fs-database: mongoFile
   servlet:

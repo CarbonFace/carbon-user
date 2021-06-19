@@ -17,7 +17,7 @@ configuration:
       - name: basePath
         # 存放路径1: 通用路径,window平台
 #        value: E:/logs/${logFileName}
-        value: ./logs/${logFileName}
+        value: logs/${logFileName}
         # 存放路径2: web工程专用,java项目没有这个变量,需要删掉,否则会报异常,这里把日志放在web项目的根目录下
         #value: ${web:rootDir}/${logFileName}
         # 存放路径3: web工程专用,java项目没有这个变量,需要删掉,否则会报异常,这里把日志放在tocmat的logs目录下

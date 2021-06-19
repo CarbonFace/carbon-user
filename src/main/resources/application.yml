@@ -1,3 +1,8 @@
+carbon_cloud:
+  mysql_address: localhost
+  redis_address: localhost
+  mongo_address: localhost
+  eureka_address: localhost
 server:
   port: 8002
 info:
@@ -12,9 +17,10 @@ spring:
     name: Carbon-User
 eureka:
   instance:
-    hostname: localhost
+    hostname: carbon-user
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
-      defaultZone: http://localhost:8008/eureka/
+      defaultZone: http://${carbon_cloud.eureka_address}:8008/eureka/
+
