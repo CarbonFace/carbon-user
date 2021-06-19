@@ -92,7 +92,7 @@
                 <version>1.2.2</version>
                 <configuration>
                     <imageName>${docker.repPrefix}/${project.name}</imageName>
-                    <dockerDirectory>../docker/${project.name}</dockerDirectory>
+                    <dockerDirectory>../carbon-docker/${project.name}</dockerDirectory>
                     <buildArgs>
                         <JAR_NAME>${project.build.finalName}.jar</JAR_NAME>
                     </buildArgs>
@@ -103,7 +103,7 @@
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                         <resource>
-                            <targetPath>../../../docker/${project.name}</targetPath>
+                            <targetPath>../../../carbon-docker/${project.name}</targetPath>
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
