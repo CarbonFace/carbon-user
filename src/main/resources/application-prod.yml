@@ -15,7 +15,7 @@ spring:
     port: 6379
     host: ${carbon_cloud.redis_address}
     database: 1
-    password: Carbon@redis
+    password: Carbon@redisRoot7
     lettuce:
       pool:
         max-active: 8
